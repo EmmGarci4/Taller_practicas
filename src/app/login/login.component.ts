@@ -20,7 +20,7 @@ export class LoginComponent{
   onLogin(){
     return this.userService.loginUser(this.user.username,this.user.password)
     .subscribe(data => {
-      this.userService.setUser(data.user)
+      this.userService.setUser(data)
       console.log(data);
     },
     error => console.log(error)
