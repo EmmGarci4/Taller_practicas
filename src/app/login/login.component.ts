@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {userService} from "../servicios/user.service";
 import {userInterface} from "../models/userInterface";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import {userInterface} from "../models/userInterface";
 export class LoginComponent{
 
 
-  constructor(private userService: userService) { }
+  constructor(private userService: userService,
+              private router:Router) { }
 
   private user: userInterface = {
     username: "", 
@@ -21,7 +23,7 @@ export class LoginComponent{
     return this.userService.loginUser(this.user.username,this.user.password)
     .subscribe(data => {
       this.userService.setUser(data)
-      console.log(data);
+      this.router.navigate(['/welcome'])
     },
     error => console.log(error)
     );
@@ -32,11 +34,11 @@ export class LoginComponent{
   }
 
   enviarInicio(){
-    window.location.href = "http://localhost:4200/home";
+    this.router.navigate(['/login'])
   }
 
   enviarRegistro(){
-    window.location.href = "http://localhost:4200/registro";
+    this.router.navigate(['/registro'])
   }
 
 }

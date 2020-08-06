@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {userService} from "../servicios/user.service";
 import {userInterface} from "../models/userInterface";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -9,7 +10,8 @@ import {userInterface} from "../models/userInterface";
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private userService: userService) { }
+  constructor(private userService: userService,
+    private router:Router) { }
 
    private User: userInterface={
       name: "",
@@ -21,19 +23,21 @@ export class RegistroComponent implements OnInit {
   }
 
   enviarInicio(){
-    window.location.href = "http://localhost:4200/home";
+    this.router.navigate(['/login'])
+    //window.location.href = "http://localhost:4200/home";
   }
 
   enviarLogin(){
-    window.location.href = "http://localhost:4200/login";
+    this.router.navigate(['/login'])
+    //window.location.href = "http://localhost:4200/login";
   }
 
   onRegister(): void{
     this.userService.registerUser(
         this.User.name, this.User.username,this.User.password
-    ).subscribe(User => {console.log(User);
+    ).subscribe(User => {
+      console.log(User);
     });
   }
-
  
 }

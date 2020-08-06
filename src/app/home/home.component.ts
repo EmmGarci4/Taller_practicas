@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   enviarLogin(){
-    window.location.href = "http://localhost:4200/login";
+    this.router.navigate(['/login'])
+    //window.location.href = "http://localhost:4200/login";
   }
 
   enviarRegistro(){
-    window.location.href = "http://localhost:4200/registro";
+    this.router.navigate(['/registro'])
+    //window.location.href = "http://localhost:4200/registro";
   }
 }
