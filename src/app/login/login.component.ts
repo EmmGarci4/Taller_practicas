@@ -13,8 +13,8 @@ export class LoginComponent{
   constructor(private userService: userService) { }
 
   private user: userInterface = {
-    username: '', 
-    password: ''
+    username: "", 
+    password: ""
   };
 
   onLogin(){
