@@ -47,6 +47,15 @@ export class userService {
    return localStorage.getItem("accessToken");
  }
 
+ getNameUser(){
+   let stringval = localStorage.getItem('currentUser')
+   let user = JSON.parse(stringval)
+   return user?user.name:''
+ }
 
+ clearUser(){
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("currentUser");
+ }
 
 }

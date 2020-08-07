@@ -22,7 +22,9 @@ export class LoginComponent{
   onLogin(){
     return this.userService.loginUser(this.user.username,this.user.password)
     .subscribe(data => {
+      console.log('data',data)
       this.userService.setUser(data)
+      this.userService.setToken(data.token);
       this.router.navigate(['/welcome'])
     },
     error => console.log(error)
@@ -40,5 +42,9 @@ export class LoginComponent{
   enviarRegistro(){
     this.router.navigate(['/registro'])
   }
+
+   cerrarSesion(){
+     this.userService.clearUser();
+   }
 
 }
