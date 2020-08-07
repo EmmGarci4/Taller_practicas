@@ -10,6 +10,8 @@ import { RegistroComponent } from './registro/registro.component';
 
 import {FormsModule}from '@angular/forms';
 import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
+import { GuardPublicService } from './servicios/guard-public/guard-public.service';
+import { GuardPrivateService } from './servicios/guard-private/guard-private.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { WelcomeUserComponent } from './welcome-user/welcome-user.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [GuardPublicService,GuardPrivateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
