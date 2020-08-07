@@ -79,7 +79,9 @@ h1.active {
   color: #0d0d0d;
 }
 
-
+.nav-item{
+  cursor: pointer;
+}
 
 /* FORM TYPOGRAPHY*/
 

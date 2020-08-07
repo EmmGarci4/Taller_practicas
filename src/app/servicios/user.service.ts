@@ -53,6 +53,13 @@ export class userService {
    return user?user.name:''
  }
 
+ isAuth(){
+    let stringval = localStorage.getItem('currentUser')
+    let user = JSON.parse(stringval)
+    return user;
+  
+ }
+
  clearUser(){
   localStorage.removeItem("accessToken");
   localStorage.removeItem("currentUser");
