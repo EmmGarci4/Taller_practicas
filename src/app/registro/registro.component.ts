@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {userService} from "../servicios/user.service";
 import {userInterface} from "../models/userInterface";
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -37,6 +38,13 @@ export class RegistroComponent implements OnInit {
         this.User.name, this.User.username,this.User.password
     ).subscribe(User => {
       console.log(User);
+    },error=>{
+      Swal.fire({
+        title: 'Error',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
     });
   }
  

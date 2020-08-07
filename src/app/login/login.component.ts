@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {userService} from "../servicios/user.service";
 import {userInterface} from "../models/userInterface";
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,14 @@ export class LoginComponent{
       this.userService.setToken(data.token);
       this.router.navigate(['/welcome'])
     },
-    error => console.log(error)
+    error => {
+      Swal.fire({
+        title: 'Error',
+        text: error.message,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+    }
     );
   }
   
